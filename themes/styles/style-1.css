@@ -1,7 +1,7 @@
 @import "theme.css";
 
 * {
-  font-family: "FiraCode Nerd Font";
+  font-family: "JetBrainsMono Nerd Font";
   font-weight: bold;
   min-height: 0;
   padding: 0;
@@ -13,7 +13,7 @@
 
 window#waybar > box {
   background-color: @main-bg;
-  margin: 0px;
+  margin: 2px;
 }
 
 /* <<--< Drop Shadow >-->> */
@@ -40,32 +40,33 @@ tooltip label {
 /* <<--< Workspace Buttons >-->> */
 
 #workspaces button {
-  min-width: 0px;
+  min-width: 0;
   color: @module-fg;
   border-radius: 8px;
   box-shadow: none;
-  margin: 2px 6;
+  margin: 2px 0;
   padding: 0 2px;
   transition: none;
 }
 #workspaces button:hover {
   color: @hover-fg;
   background: @hover-bg;
-  margin: 2px;
-  padding: 0 6px;
   text-shadow: none;
 }
 #workspaces button.active {
   color: @active-fg;
   background: @active-bg;
-  /*text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);*/
-  /*box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);*/
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   margin: 2px;
   padding: 0 6px;
 }
+
 #workspaces button.focused {
   color: @active-fg;
   background: @active-bg;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
   margin: 2px;
   padding: 0 6px;
 }
@@ -102,6 +103,7 @@ tooltip label {
 #custom-left7,
 #custom-left8 {
   margin-bottom: 0;
+  text-shadow: -2px 0 2px rgba(0, 0, 0, 0.5);
 }
 
 #custom-right1,
@@ -111,6 +113,7 @@ tooltip label {
 #custom-right5 {
   margin-bottom: 0;
   padding-right: 3px;
+  text-shadow: 2px 0 2px rgba(0, 0, 0, 0.5);
 }
 
 /* <<--< Modules >-->> */
@@ -138,6 +141,7 @@ tooltip label {
 #custom-right1 {
   color: @workspaces;
   background: @main-bg;
+  text-shadow: 3px 0 2px rgba(0, 0, 0, 0.4);
   margin-bottom: 0;
 }
 
@@ -189,7 +193,6 @@ tooltip label {
 #custom-leftin1 {
   color: @cpu;
   margin-bottom: -1px;
-  margin-top: -1px
 }
 
 /* Distro Icon */
@@ -206,7 +209,7 @@ tooltip label {
   background: @distro-bg;
   margin: 0 -1px -2px 0;
   padding: 0 0 0 3px;
-  text-shadow: 0 0 0px rgba(0, 0, 0, 1);
+  text-shadow: 0 0 1.5px rgba(0, 0, 0, 1);
 }
 #custom-right2 {
   color: @distro-bg;
@@ -220,7 +223,6 @@ tooltip label {
 #custom-rightin1 {
   color: @time;
   margin-bottom: -1px;
-  margin-top: -1px;
 }
 #idle_inhibitor {
   background: @time;
@@ -347,13 +349,12 @@ tooltip label {
   color: @battery;
   background: @main-bg;
   margin-bottom: -1px;
-  margin-top: -1px
 }
 #custom-power {
   color: @main-bg;
   background: @power;
-  text-shadow: 0 0 0px rgba(0, 0, 0, 0.6);
-  box-shadow: 0 0 0px 0px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   margin: 2px 4px 2px 0;
   padding: 0 6px 0 9px;
@@ -379,9 +380,9 @@ tooltip label {
   the layout consistent.
 */
 
-/* modules */
+/* workspace icon and buttons, window and media title */
 * {
-  font-size: 15px;
+  font-size: 10px;
 }
 
 /* left and right arrows */
@@ -398,25 +399,25 @@ tooltip label {
 #custom-right3,
 #custom-right4,
 #custom-right5 {
-  font-size: 18.68px;
+  font-size: 14.68px;
 }
 
 /* left and right inverse */
 #custom-leftin1,
 #custom-leftin2,
 #custom-rightin1 {
-  font-size: 19.5px;
+  font-size: 15.5px;
 }
 
 /* distro icon */
 #custom-distro {
-  font-size: 18.6px;
+  font-size: 14.6px;
 }
 
 /* distro arrows override */
 #custom-left5,
 #custom-right2 {
-  font-size: 19.68px;
+  font-size: 15.68px;
 }
 
 /*
@@ -436,3 +437,21 @@ tooltip label {
   border-radius: 10px;
   padding: 0 6px 0 9px;
 }
+
+/*
+  NOTE: If your changes don’t take effect, they might
+  be overridden by `animation.css`.
+
+  To fix this, copy your updated font sizes from this
+  file and paste them into the corresponding `*_expand`
+  keyframes.
+
+  For example, if you change the font size of the
+  distro icon, update it in `distro_expand`.
+
+  - distro icon → `distro_expand` (line 143)
+  - power button → `power_expand` (line 158)
+  - all other modules → `module_expand` (line 172)
+*/
+
+@import "animation.css";
